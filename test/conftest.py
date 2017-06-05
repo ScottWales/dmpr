@@ -18,7 +18,7 @@ limitations under the License.
 """
 import pytest
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='module')
 def cfchecker():
     """
     Makes the CEDA CF Checker available for tests
@@ -29,7 +29,7 @@ def cfchecker():
     checker = cfchecks.CFChecker(
             cfStandardNamesXML=cfchecks.STANDARDNAME,
             cfAreaTypesXML=cfchecks.AREATYPES,
-            version=None,
+            version=cfchecks.CFVersion(),
             )
     yield checker
 
